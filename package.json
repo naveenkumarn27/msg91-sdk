@@ -1,0 +1,37 @@
+{
+  "name": "msg91-sdk",
+  "version": "1.0.0",
+  "description": "This is used to handle msg91 apis for send otp and message",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naveenkumarn27/msg91-sdk"
+  },
+  "keywords": [
+    "SendOtp",
+    "Send Message",
+    "Flow",
+    "Node",
+    "API"
+  ],
+  "author": "Naveen Kumar Kuppan",
+  "license": "MIT",
+  "homepage": "https://github.com/naveenkumarn27/msg91-sdk",
+  "dependencies": {
+
+  },
+  "bugs": {
+    "url": "https://github.com/naveenkumarn27/msg91-sdk/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mocha": "^7.1.1",
+    "nock": "*"
+  }
+}
