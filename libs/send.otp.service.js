@@ -72,7 +72,9 @@ class SendOtpService {
    * @return {string} path of the send otp
    **/
   constructRetryOTPRequest(aSendOtpService, aOptions) {
-    let sendOTPath = `/api/v5/otp/retry?authkey=${encodeURIComponent(aSendOtpService.authKey)}`
+    let sendOTPath = `/api/v5/otp/retry?authkey=${encodeURIComponent(
+      aSendOtpService.authKey
+    )}`
 
     if (aOptions.mobile && aOptions.mobile.length > 0) {
       if (aOptions.mobile.length > 10) {
@@ -103,7 +105,9 @@ class SendOtpService {
    * @return {string} path of the send otp
    **/
   constructVerifyOTPRequest(aSendOtpService, aOptions) {
-    let sendOTPath = `/api/v5/otp/verify?authkey=${encodeURIComponent(aSendOtpService.authKey)}`
+    let sendOTPath = `/api/v5/otp/verify?authkey=${encodeURIComponent(
+      aSendOtpService.authKey
+    )}`
 
     if (aOptions.otp && aOptions.otp > 0) {
       sendOTPath += `&otp=${aOptions.otp}`
@@ -130,7 +134,9 @@ class SendOtpService {
    * @return {string} path of the send otp
    **/
   constructSendOTPRequest(aSendOtpService, aOptions) {
-    let sendOTPath = `/api/v5/otp?authkey=${encodeURIComponent(aSendOtpService.authKey)}`
+    let sendOTPath = `/api/v5/otp?authkey=${encodeURIComponent(
+      aSendOtpService.authKey
+    )}`
 
     sendOTPath = this.constructImportantOTPParams(
       aOptions,
@@ -165,7 +171,9 @@ class SendOtpService {
     }
 
     if (aOptions.extra_param && aOptions.extra_param.length > 0) {
-      sendOTPath += `&extra_param=${encodeURIComponent(JSON.stringify(aOptions.extra_param))}`
+      sendOTPath += `&extra_param=${encodeURIComponent(
+        JSON.stringify(aOptions.extra_param)
+      )}`
     }
 
     if (aOptions.email && aOptions.email.length > 0) {
@@ -193,12 +201,13 @@ class SendOtpService {
       aSendOtpService.otpTemplateId &&
       aSendOtpService.otpTemplateId.length > 0
     ) {
-      sendOTPath += `&template_id=${encodeURIComponent(aSendOtpService.otpTemplateId)}`
+      sendOTPath += `&template_id=${encodeURIComponent(
+        aSendOtpService.otpTemplateId
+      )}`
     } else {
-      sendOTPath += `&message=${encodeURIComponent(aSendOtpService.messageTemplate.replace(
-        '{{otp}}',
-        otp
-      ))}`
+      sendOTPath += `&message=${encodeURIComponent(
+        aSendOtpService.messageTemplate.replace('{{otp}}', otp)
+      )}`
     }
     return sendOTPath
   }
