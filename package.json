@@ -1,7 +1,7 @@
 {
   "name": "msg91-sdk",
-  "version": "1.0.0",
-  "description": "This is used to handle msg91 apis for send otp and message",
+  "version": "1.0.1",
+  "description": "This is used to handle msg91 apis such as send otp, sms and sms flow.",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec"
@@ -11,6 +11,7 @@
     "url": "https://github.com/naveenkumarn27/msg91-sdk"
   },
   "keywords": [
+    "msg91",
     "SendOtp",
     "Send Message",
     "Flow",

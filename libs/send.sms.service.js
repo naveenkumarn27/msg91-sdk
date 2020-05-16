@@ -22,7 +22,17 @@ class SendSmsService {
         if (aMessages && aMessages.length > 0) {
             if (aMessages instanceof Array) {
                 aMessages.forEach((message) => {
-                    messages.push(this.extractedMessage(message, aMobileNumbers));
+                    message = message.trimEnd()
+                    if (message.length > 0) {
+                        messages.push(this.extractedMessage(message, aMobileNumbers));
+                    }
+                })
+            } else if (aMessages instanceof String && aMessages.includes(",")) {
+                aMessages.split(",").forEach((message) => {
+                    message = message.trimEnd()
+                    if (message.length > 0) {
+                        messages.push(this.extractedMessage(message, aMobileNumbers));
+                    }
                 })
             } else {
                 messages.push(this.extractedMessage(aMessages, aMobileNumbers));
@@ -40,7 +50,11 @@ class SendSmsService {
             if (aMobileNumbers instanceof Array) {
                 phoneNumbers.push(aMobileNumbers)
             } else if (aMobileNumbers instanceof String && aMobileNumbers.includes(",")) {
-                phoneNumbers.push(aMobileNumbers.split(","))
+                let numberArray = aMobileNumbers.split(",");
+                numberArray.forEach((aNumber) => {
+                    aNumber.trim()
+                })
+                phoneNumbers.push(numberArray)
             } else {
                 phoneNumbers.push(aMobileNumbers)
             }
@@ -119,6 +133,10 @@ class SendSmsService {
             try {
 
                 const messageArray = this.extractMessagesObject(aMobileNumbers, aMessage)
+
+                if (!messageArray || messageArray.length === 0) {
+                    reject("Message object should not null or empty")
+                }
 
                 const body = {
                     sender: this.senderId,

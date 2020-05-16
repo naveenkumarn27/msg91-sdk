@@ -84,7 +84,7 @@ class SendOtpService {
             throw new Error("mobile number should not be null");
         }
 
-        if (aOptions.retryType && aOptions.retryType > 0) {
+        if (aOptions.retryType && aOptions.retryType > 0 && ["voice", "text"].includes(aOptions.retryType)) {
             sendOTPath += "&retrytype=" + aOptions.retryType
         } else {
             sendOTPath += "&retrytype=" + "text"
