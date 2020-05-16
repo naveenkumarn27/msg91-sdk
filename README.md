@@ -1,7 +1,9 @@
 # msg91-sdk
 This is used to handle msg91 apis such as send otp, sms and sms flow.
 
-##How to implement 
+[![NPM](https://nodei.co/npm/msg91-sdk.png)](https://nodei.co/npm/msg91-sdk/)
+
+## How to implement 
 
 Install node module package in your project
 
