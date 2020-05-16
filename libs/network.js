@@ -1,4 +1,4 @@
-const http = require("https");
+const http = require('https')
 
 /**
  * calling corresponding
@@ -7,27 +7,35 @@ const http = require("https");
  * @return {Promise<Object>}
  */
 exports.performRequest = async (aOptions) => {
+  return new Promise((resolve, reject) => {
+    const req = http.request(aOptions, (res) => {
+      const chunks = []
 
-    return new Promise((resolve, reject) => {
+      res.on('data', (chunk) => {
+        chunks.push(chunk)
+      })
 
-        const req = http.request(aOptions, function (res) {
-
-            const chunks = [];
-
-            res.on("data", function (chunk) {
-                chunks.push(chunk);
-            });
-
-            res.on("end", function () {
-                const body = Buffer.concat(chunks);
-                resolve(body.toString());
-            });
-        });
-
-        if (aOptions.body) {
-            req.write(JSON.stringify(aOptions.body))
-        }
-
-        req.end();
+      res.on('end', () => {
+        const body = Buffer.concat(chunks)
+        resolve(body.toString())
+      })
     })
+
+    if (aOptions.body) {
+      req.write(JSON.stringify(aOptions.body))
+    }
+
+    req.end()
+  })
+}
+
+exports.handleResponse = (response, resolve, rejects) => {
+  if (response.type === 'error') {
+    if (!response.code) {
+      response.code = 201
+    }
+    rejects(response)
+  }
+
+  resolve(response)
 }

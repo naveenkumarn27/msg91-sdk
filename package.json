@@ -1,10 +1,12 @@
 {
   "name": "msg91-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is used to handle msg91 apis such as send otp, sms and sms flow.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "format": "prettier --write --config .prettierrc.json \"**/*.js\"",
+    "lint": "eslint --fix --config .eslintrc.json \"**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -18,12 +20,15 @@
     "Node",
     "API"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "author": "Naveen Kumar Kuppan",
   "license": "MIT",
   "homepage": "https://github.com/naveenkumarn27/msg91-sdk",
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "bugs": {
     "url": "https://github.com/naveenkumarn27/msg91-sdk/issues"
   },
@@ -33,6 +38,13 @@
   "devDependencies": {
     "express": "^4.17.1",
     "mocha": "^7.1.1",
-    "nock": "*"
+    "nock": "*",
+    "husky": "^4.2.3",
+    "eslint": "^6.8.0",
+    "eslint-config-formidable": "^4.0.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.3",
+    "prettier-eslint": "^9.0.1"
   }
 }
