@@ -15,6 +15,10 @@ exports.performRequest = async (aOptions) => {
         chunks.push(chunk)
       })
 
+      res.on('error', (aReason) => {
+        reject(aReason)
+      })
+
       res.on('end', () => {
         const body = Buffer.concat(chunks)
         resolve(body.toString())
