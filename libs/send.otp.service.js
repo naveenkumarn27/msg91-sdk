@@ -88,7 +88,7 @@ class SendOtpService {
 
     if (
       aOptions.retryType &&
-      aOptions.retryType > 0 &&
+      aOptions.retryType.length > 0 &&
       ['voice', 'text'].includes(aOptions.retryType)
     ) {
       sendOTPath += `&retrytype=${aOptions.retryType}`
