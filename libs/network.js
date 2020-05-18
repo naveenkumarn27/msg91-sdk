@@ -21,7 +21,7 @@ exports.performRequest = async (aOptions) => {
 
       res.on('end', () => {
         const body = Buffer.concat(chunks)
-        resolve(body.toString())
+        resolve(JSON.parse(body.toString()))
       })
     })
 
