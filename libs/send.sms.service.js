@@ -64,6 +64,7 @@ class SendSmsService {
     } else {
       throw new Error('Mobile numbers should not be  null')
     }
+    return message
   }
 
   /**
