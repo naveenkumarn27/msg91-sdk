@@ -147,10 +147,6 @@ require('msg91-sdk').getBalance("AUTH_KEY", "ROUTE_ID").then(() => {
 })
 ```
 
-## Buy Me a Coffee
-
-<a href="https://www.buymeacoffee.com/naveenkumarn2" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
 ## License
 [MIT License](https://opensource.org/licenses/MIT)
 ```licsene
